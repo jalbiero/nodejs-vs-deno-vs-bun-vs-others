@@ -1,0 +1,29 @@
+# Copyright (C) 2023 Javier Albiero (jalbiero)
+# Distributed under the MIT License (see the accompanying LICENSE file
+# or go to http://opensource.org/licenses/MIT).
+
+services:
+  bun:
+    image: jalbiero/test-bun
+    ports:
+      - 8001:8000
+  cpp:
+    image: jalbiero/test-cpp
+    ports:
+      - 8002:8000
+  deno:
+    image: jalbiero/test-deno
+    ports:
+      - 8003:8000
+  nodejs:
+    image: jalbiero/test-nodejs
+    ports:
+      - 8004:8000
+  python:
+    image: jalbiero/test-python
+    ports:
+      - 8005:8000
+  rust:
+    image: jalbiero/test-rust
+    ports:
+      - 8006:8000

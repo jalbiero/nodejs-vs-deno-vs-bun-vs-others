@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "apps/bun"
+		},
+		{
+			"path": "apps/c++"
+		},
+		{
+			"path": "apps/deno"
+		},
+		{
+			"path": "apps/java"
+		},
+		{
+			"path": "apps/nodejs"
+		},
+		{
+			"path": "apps/python"
+		},
+				{
+			"path": "apps/rust"
+		},
+		{
+			"path": "tests"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
