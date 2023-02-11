@@ -1,0 +1,21 @@
+# Copyright (C) 2023 Javier Albiero (jalbiero)
+# Distributed under the MIT License (see the accompanying LICENSE file
+# or go to http://opensource.org/licenses/MIT).
+
+[tool.poetry]
+name = "test_app"
+version = "0.1.0"
+description = ""
+authors = ["Javier Albiero <51678384+jalbiero@users.noreply.github.com>"]
+packages = [{include = "test_app"}]
+
+[tool.poetry.scripts]
+app = "test_app.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+flask = "^2.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

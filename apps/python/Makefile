@@ -1,0 +1,30 @@
+# Copyright (C) 2023 Javier Albiero (jalbiero)
+# Distributed under the MIT License (see the accompanying LICENSE file
+# or go to http://opensource.org/licenses/MIT).
+
+VERSION = 0.1.0
+NAME = jalbiero/test-python
+
+add-local-deps:
+	if [ ! -d test_app/.venv ]; then \
+		cd test_app && poetry install; \
+	fi
+
+remove-local-deps:
+	rm -rf test_app/.venv
+
+build-image: remove-local-deps
+	docker build -t $(NAME) .
+
+push-image:
+	docker tag $(NAME) $(NAME):$(VERSION)
+	docker push $(NAME):$(VERSION)
+	docker tag $(NAME) $(NAME):latest
+	docker push $(NAME):latest
+
+run-image:
+	docker run --init -it -p 8000:8000 $(NAME):latest
+
+# Only valid if you have Python/Poetry installed on your system
+run-local: add-local-deps
+	cd test_app && poetry run app
