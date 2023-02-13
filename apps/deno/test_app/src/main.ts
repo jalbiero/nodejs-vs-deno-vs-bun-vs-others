@@ -9,8 +9,12 @@ const serverPort = 8000;
 const serverHost = "0.0.0.0";
 const app: Application = express();
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.send("Deno test");
+});
+
+app.get("/echo/:data", (req: Request, res: Response) => {
+  res.send(req.params.data);
 });
 
 app.get("/getPrimesLessThan/:limit", (req: Request, res: Response) => {

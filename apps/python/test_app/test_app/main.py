@@ -16,8 +16,13 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def api_index():
+def api_index() -> str:
     return "Python test"
+
+
+@app.route("/echo/<string:data>")
+def api_echo(data: str) -> str:
+    return data
 
 
 @app.route("/getPrimesLessThan/<int:limit>")

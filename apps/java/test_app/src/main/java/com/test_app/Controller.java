@@ -19,7 +19,7 @@ class Controller {
         return "Java test";
     }
 
-    @GetMapping("/{data}")
+    @GetMapping("/echo/{data}")
     String echo(@PathVariable String data) {
         return data;
     }

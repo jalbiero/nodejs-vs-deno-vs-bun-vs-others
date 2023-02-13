@@ -13,6 +13,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("NodeJs test");
 });
 
+app.get("/echo/:data", (req: Request, res: Response) => {
+  res.send(req.params.data);
+});
+
 app.get("/getPrimesLessThan/:limit", (req: Request, res: Response) => {
   const limit: number = Number.parseInt(req.params.limit);
 
