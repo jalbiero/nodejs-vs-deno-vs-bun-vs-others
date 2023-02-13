@@ -13,6 +13,11 @@ fn index() -> &'static str {
     "Rust test"
 }
 
+#[get("/echo/<data>")]
+fn echo<'a>(data: &str) -> &str {
+    data
+}
+
 #[get("/getPrimesLessThan/<limit>")]
 fn get_primes_less_than(limit: i64) -> String {
     let primes = primes::get_primes_less_than(limit);
@@ -40,6 +45,7 @@ fn count_primes_less_than(limit: i64) -> String {
 fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![index])
+        .mount("/", routes![echo])
         .mount("/", routes![get_primes_less_than])
         .mount("/", routes![count_primes_less_than])
         .attach(AdHoc::on_liftoff("Liftoff Message", |orbit| {

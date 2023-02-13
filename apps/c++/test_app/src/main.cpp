@@ -26,6 +26,15 @@ int main() {
         {Get});
 
     app().registerHandler(
+        "/echo/{data}", 
+        [] (const HttpRequestPtr&, RespCallbackT &&callback, const std::string& data) {
+            auto resp = HttpResponse::newHttpResponse();
+            resp->setBody(data);
+            callback(resp);
+        },
+        {Get});
+
+    app().registerHandler(
         "/getPrimesLessThan/{limit}", 
         [] (const HttpRequestPtr&, RespCallbackT &&callback, const std::string& limit) {
             try {
