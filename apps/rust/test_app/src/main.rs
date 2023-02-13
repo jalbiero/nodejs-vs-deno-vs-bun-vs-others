@@ -14,7 +14,7 @@ fn index() -> &'static str {
 }
 
 #[get("/echo/<data>")]
-fn echo<'a>(data: &str) -> &str {
+fn echo(data: &str) -> &str {
     data
 }
 
