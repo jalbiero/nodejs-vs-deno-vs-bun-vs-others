@@ -20,9 +20,9 @@ Tests are executed from [JMeter](https://jmeter.apache.org/) via some REST APIs.
 
 Language/Runtime | Version | REST Library/Framework used | Version 
 -- | -- | -- | -- 
-Bun  | 0.4.0 | Express | 4.18.2
-C++  | g++ 12.2.1, C++17 mode | Drogon | 1.8.3
-Deno | 1.29.4 | Express | 4.18.2
+Bun  | 0.5.1 | Express | 4.18.2
+C++  | g++ 12.2.1, C++20 mode | Drogon | 1.8.3
+Deno | 1.30.3 | Express | 4.18.2
 Java (OpenJDK) | 19.0.1 | Spring boot | 3.0.2
 NodeJS | 19.4 | Express | 4.18.2
 Python | 3.11 | Flask | 2.2.2
