@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM node:19.6.1-alpine3.17
+FROM node:${NODE_DOCKER}
 
 WORKDIR /opt/test
 

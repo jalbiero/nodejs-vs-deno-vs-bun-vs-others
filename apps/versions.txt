@@ -1,0 +1,31 @@
+# Version file
+# After any update here, run the companion script "update_versions.sh"
+
+# Note: Always edit template files (.vtmpl) if you need it, don't edit
+# associated files (e.g. template: foo.cpp.vtmpl, associated: foo.cpp) because 
+# the file is going to be overwritten by the updater script.
+
+BUN_DOCKER=0.5.1
+BUN_DEP_EXPRESS=4.18.2
+
+# For more information about what version of g++
+# is packed with Alpine 3.17 go to this:
+# https://pkgs.alpinelinux.org/packages?name=g%2B%2B&branch=v3.17&repo=&arch=&maintainer=
+CPP_ALPINE_DOCKER=3.17.1
+CPP_DEP_DROGON=v1.8.3
+
+DENO_DOCKER=1.30.3
+DENO_DEP_EXPRESS=4.18.2
+
+JAVA_DOCKER=19-slim
+JAVA_DEP_SPRING_BOOT=3.0.2
+
+NODE_DOCKER=19.6.1-alpine3.17
+NODE_DEP_EXPRESS=4.18.2
+
+PYTHON_DOCKER=3.11.2-alpine3.17
+PYTHON_DEP_FLASK=2.2.2
+
+RUST_DOCKER=1.67.1-alpine3.17
+RUST_ALPINE_DOCKER=3.17.1
+RUST_DEP_ROCKET=0.5.0-rc.2
