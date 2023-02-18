@@ -5,7 +5,7 @@
 # associated files (e.g. template: foo.cpp.vtmpl, associated: foo.cpp) because 
 # the file is going to be overwritten by the updater script.
 
-BUN_DOCKER=0.5.6
+BUN_DOCKER=0.5.1
 BUN_DEP_EXPRESS=4.18.2
 
 # For more information about what version of g++
