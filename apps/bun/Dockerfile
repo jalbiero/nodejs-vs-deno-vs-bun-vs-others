@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM jarredsumner/bun:0.5.0
+FROM jarredsumner/bun:0.5.6
 
 WORKDIR /opt/test
 

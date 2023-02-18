@@ -2,14 +2,13 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM node:19.6.1-alpine3.17
+FROM denoland/deno:${DENO_DOCKER}
 
 WORKDIR /opt/test
 
-COPY ./test_app/ .
+COPY ./test_app .
 
-RUN npm install -g typescript && \
-    npm install && \
-    tsc
+# Cache dependencies
+RUN deno task deps 
 
-CMD ["npm", "run", "app"]
+CMD ["deno", "task", "app"]
