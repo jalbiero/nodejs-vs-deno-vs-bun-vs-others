@@ -10,7 +10,7 @@ const serverHost = "0.0.0.0";
 const app: Application = express();
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("NodeJs test");
+  res.send("NodeJS test");
 });
 
 app.get("/echo/:data", (req: Request, res: Response) => {
