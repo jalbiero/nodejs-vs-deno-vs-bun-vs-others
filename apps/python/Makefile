@@ -10,10 +10,7 @@ add-local-deps:
 		cd test_app && poetry install; \
 	fi
 
-remove-local-deps:
-	rm -rf test_app/.venv
-
-build-image: remove-local-deps
+build-image:
 	docker build -t $(NAME) .
 
 push-image:
