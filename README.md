@@ -1,6 +1,6 @@
 # NodeJS vs Deno vs Bun vs Others
 
-**DISCLAIMER: this is a work in progress (tests are unfinished)**
+**DISCLAIMER: this is a work in progress (tests are unfinished/not working)**
 
 ## Introduction
 

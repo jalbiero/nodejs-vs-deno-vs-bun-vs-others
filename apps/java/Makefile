@@ -5,10 +5,7 @@
 VERSION = 0.1.0
 NAME = jalbiero/test-java
 
-remove-local-deps:
-	rm -rf test_app/build
-
-build-image: remove-local-deps
+build-image:
 	docker build -t $(NAME) .
 
 push-image:

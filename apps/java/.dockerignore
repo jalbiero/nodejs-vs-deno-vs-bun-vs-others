@@ -1,0 +1,4 @@
+# Ignore some stuff in case you build the project locally
+**/.gradle/
+**/bin/
+**/build/

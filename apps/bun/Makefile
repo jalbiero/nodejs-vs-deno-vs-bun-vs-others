@@ -10,10 +10,7 @@ add-local-deps:
 		cd test_app && bun install; \
 	fi
 
-remove-local-deps:
-	rm -rf test_app/node_modules
-
-build-image: remove-local-deps
+build-image:
 	docker build -t $(NAME) .
 
 push-image:

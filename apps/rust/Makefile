@@ -5,10 +5,7 @@
 VERSION = 0.1.0
 NAME = jalbiero/test-rust
 
-remove-local-deps:
-	rm -rf test_app/target
-
-build-image: remove-local-deps
+build-image:
 	docker build -t $(NAME) .
 
 push-image:
