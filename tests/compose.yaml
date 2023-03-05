@@ -15,15 +15,19 @@ services:
     image: jalbiero/test-deno
     ports:
       - 8003:8000
+  java:
+    image: jalbiero/test-java
+    ports:
+      - 8004:8000
   nodejs:
     image: jalbiero/test-nodejs
     ports:
-      - 8004:8000
+      - 8005:8000
   python:
     image: jalbiero/test-python
     ports:
-      - 8005:8000
+      - 8006:8000
   rust:
     image: jalbiero/test-rust
     ports:
-      - 8006:8000
+      - 8007:8000
