@@ -4,6 +4,7 @@
 
 #include <functional>
 #include <string>
+#include <utility>
 
 #include <drogon/drogon.h>
 #include "primes.hpp"
@@ -44,7 +45,7 @@ int main() {
                 Json::Value root;
                 root["prime_less_than"] = Json::Value::UInt64(num_limit);
                 root["count"] = Json::Value::UInt64(primes.size());
-                root["primes"] = primes;
+                root["primes"] = std::move(primes);
 
                 callback(HttpResponse::newHttpJsonResponse(root));
             }
