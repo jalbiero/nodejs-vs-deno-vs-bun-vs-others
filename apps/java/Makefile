@@ -6,7 +6,7 @@ VERSION = 0.1.0
 NAME = jalbiero/test-java
 
 build-image:
-	docker build -t $(NAME) .
+	docker build -t $(NAME):latest .
 
 push-image:
 	docker tag $(NAME) $(NAME):$(VERSION)

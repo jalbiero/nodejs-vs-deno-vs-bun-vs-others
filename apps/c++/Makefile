@@ -9,8 +9,8 @@ remove-local-deps:
 	rm -rf test_app/build
 
 build-image: remove-local-deps
-	docker build -t $(NAME) .
-
+	docker build -t $(NAME):latest .
+	
 push-image:
 	docker tag $(NAME) $(NAME):$(VERSION)
 	docker push $(NAME):$(VERSION)

@@ -29,7 +29,7 @@ namespace primes
     inline Json::Value get_primes_less_than(std::int64_t limit) {
         Json::Value result(Json::arrayValue);
 
-        for (std::int64_t i=2; i<limit; i++) {
+        for (std::int64_t i=2; i<limit; i++) { 
             if (is_prime(i))
                 result.append(Json::Value::UInt64(i));
         }
