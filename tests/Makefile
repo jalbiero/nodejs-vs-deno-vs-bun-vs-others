@@ -2,58 +2,67 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 #
-# Makefile based on https://raw.githubusercontent.com/justb4/docker-jmeter/master/Makefile
 
-TARGET_HOST ?= "127.0.0.1"
-TARGET_PORT ?= "8001"
-THREADS ?= "1"
-CONTAINER_NAME ?= "docker-jmeter"
-IMAGE = "justb4/jmeter:5.5"
-TEST ?= trivial
+include .env
+
+REPORT_DIR ?= results
+TARGET_HOST ?= "172.17.0.1" # < host's localhost from the container point of view
+
+JMETER_CONTAINER_NAME ?= "test-docker-jmeter"
+JMETER_IMAGE = "justb4/jmeter:5.5"
 JVM_ARGS ?= "-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m"
-TARGET_PATH ?= "/index.html"
-TARGET_KEYWORD ?= "domain"
 
-#TEST_DIR = tests/$(TEST)
-TEST_DIR = jmeter
+AS_HOST = --user $(shell id -u):$(shell id -g)
 
-REPORT_DIR=$(TEST_DIR)/report
+NUM_OF_THREADS ?= 5
+NUM_OF_REQS ?= 100
+
+# Endpoint params
+# TODO Improve echo data
+ENDP_ECHO_DATA ?= "fooooooo-data-123-123-123-12-3-123123"
+ENDP_GET_PRIMES_LIMIT ?= 1000
+ENDP_COUNT_PRIMES_LIMIT ?= 1000
+
+# Description: Executes JMeter
+# Arg $1 = TestName
+# Arg $2 = Port
+FUNCTION_RUN_JMETER = \
+	@echo -e "\nRunning $1...\n\n" && \
+	docker run $(AS_HOST) --rm --name $(JMETER_CONTAINER_NAME) \
+		-i \
+		-v $(PWD):$(PWD) \
+		-w $(PWD) $(JMETER_IMAGE) \
+		-Dlog_level.jmeter=DEBUG \
+		-JTARGET_HOST=$(TARGET_HOST) -JTARGET_PORT=$2 \
+		-JNUM_OF_THREADS=$(NUM_OF_THREADS) -JNUM_OF_REQS=$(NUM_OF_REQS) \
+		-JECHO_DATA=$(ENDP_ECHO_DATA) \
+		-JGET_PRIMES_LIMIT=$(ENDP_GET_PRIMES_LIMIT) \
+		-JCOUNT_PRIMES_LIMIT=$(ENDP_GET_PRIMES_LIMIT) \
+		-n -t jmeter/test-plan.jmx -l ./results/$1.csv \
+		-e -o ./results/$1
 
 start_dockers:
 ifndef DO_NOT_START_DOCKERS
-	docker-compose down
-	docker-compose up -d
-# 	
-# 	@echo Waiting for services
-# 	@sleep 5 # nasty fixed wait
-# 	docker-compose logs
-	
+	docker compose down
+	docker compose up -d
+
+	# Usually, a better alternative is to include a "healthcheck" section
+	# in the docker compose file for each service, but this check will interfiere
+	# with the tests
+	@echo Waiting for services
+	@sleep 5 
+	docker-compose logs
 endif
 
-all: clean run report
-
 clean:
-	@rm -rf $(REPORT_DIR) $(TEST_DIR)/test-plan.jtl $(TEST_DIR)/jmeter.log
+	rm -rf $(REPORT_DIR)
+	mkdir -p $(REPORT_DIR)
 
-run: start_dockers
-	@mkdir -p $(REPORT_DIR)
-	docker run --rm --name $(CONTAINER_NAME) -i -v $(PWD):$(PWD) -w $(PWD) $(IMAGE) \
-		-Dlog_level.jmeter=DEBUG \
-		-JTARGET_HOST=${TARGET_HOST} -JTARGET_PORT=${TARGET_PORT} \
-		-JTARGET_PATH=${TARGET_PATH} -JTARGET_KEYWORD=${TARGET_KEYWORD} \
-		-JTHREADS=$(THREADS) \
-		-n -t $(TEST_DIR)/test-plan.jmx -l $(TEST_DIR)/test-plan.jtl -j $(TEST_DIR)/jmeter.log \
-		-e -o $(REPORT_DIR)
-
-report:
-	echo "==== jmeter.log ===="
-	cat $(TEST_DIR)/jmeter.log
-	echo "==== Raw Test Report ===="
-	cat $(TEST_DIR)/test-plan.jtl
-	echo "==== HTML Test Report ===="
-	echo "See HTML test report in $(REPORT_DIR)/index.html"
-
-
-
-start_all_local_tests:: start_dockers
-	docker 
+run: start_dockers clean
+	$(call FUNCTION_RUN_JMETER,bun_test,$(BUN_PORT))
+	$(call FUNCTION_RUN_JMETER,cpp_test,$(CPP_PORT))
+	$(call FUNCTION_RUN_JMETER,deno_test,$(DENO_PORT))
+	$(call FUNCTION_RUN_JMETER,java_test,$(JAVA_PORT))
+	$(call FUNCTION_RUN_JMETER,nodejs_test,$(NODEJS_PORT))
+	$(call FUNCTION_RUN_JMETER,python_test,$(PYTHON_PORT))
+	$(call FUNCTION_RUN_JMETER,rust_test,$(RUST_PORT))
