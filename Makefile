@@ -23,9 +23,15 @@ JMETER_IMAGE = "justb4/jmeter:5.5"
 JVM_ARGS ?= "-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m"
 AS_HOST = --user $(shell id -u):$(shell id -g)
 
+# Description: Encodes an arbitrary text in order to be used in a URI
+# Arg $1: Text to encode
+# TODO Check if 'jq' is installed
+FUNCTION_ENCODE_URI = \
+	$(shell echo "$1" | jq -sRr @uri)
+
 # Description: Executes JMeter
-# Arg $1 = TestName
-# Arg $2 = Port
+# Arg $1: TestName
+# Arg $2: Port
 FUNCTION_RUN_JMETER = \
 	@echo -e "\nRunning $1...\n\n" && \
 	docker run $(AS_HOST) --rm --name $(JMETER_CONTAINER_NAME) \
@@ -34,8 +40,10 @@ FUNCTION_RUN_JMETER = \
 		-w $(PWD) $(JMETER_IMAGE) \
 		-Dlog_level.jmeter=INFO \
 		-j $(REPORT_DIR)/jmeter.log \
-		-JTARGET_HOST=$(TARGET_HOST) -JTARGET_PORT=$2 \
-		-JNUM_OF_THREADS=$(NUM_OF_THREADS) -JNUM_OF_REQS=$(NUM_OF_REQS_PER_THREAD) \
+		-JTARGET_HOST=$(TARGET_HOST) \
+		-JTARGET_PORT=$2 \
+		-JNUM_OF_THREADS=$(NUM_OF_THREADS) \
+		-JNUM_OF_REQS=$(NUM_OF_REQS_PER_THREAD) \
 		-JECHO_DATA=$(ENDP_ECHO_DATA) \
 		-JGET_PRIMES_LIMIT=$(ENDP_GET_PRIMES_LIMIT) \
 		-JCOUNT_PRIMES_LIMIT=$(ENDP_GET_PRIMES_LIMIT) \
@@ -69,3 +77,6 @@ run: start_dockers clean
 	$(call FUNCTION_RUN_JMETER,python_test,$(PYTHON_PORT))
 	$(call FUNCTION_RUN_JMETER,rust_test,$(RUST_PORT))
 	@echo -e "\n** Test Suite has finalized. Check '$(REPORT_DIR)' directory for results **\n"
+
+build:
+	docker compose build
