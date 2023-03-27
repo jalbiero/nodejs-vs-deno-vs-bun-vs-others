@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "results-processor"
+version = "0.1.0"
+description = ""
+authors = ["Javier Albiero <51678384+jalbiero@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "results_processor"}]
+
+[tool.poetry.scripts]
+app = "results_processor.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "^1.5.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
