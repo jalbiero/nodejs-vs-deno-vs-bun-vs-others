@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM jarredsumner/bun:${BUN_DOCKER}
+FROM oven/bun:${BUN_DOCKER}
 
 WORKDIR /opt/test
 

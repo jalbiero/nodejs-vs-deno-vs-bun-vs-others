@@ -11,4 +11,4 @@ edition = "2021"
 
 [dependencies]
 json = "0.12.4"
-rocket = "0.5.0-rc.2"
+rocket = "0.5.0-rc.3"

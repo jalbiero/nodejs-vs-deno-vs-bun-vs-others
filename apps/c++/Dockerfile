@@ -16,7 +16,7 @@ RUN apk --no-cache add \
     util-linux-dev \
     zlib-dev 
     
-RUN git clone -b v1.8.3 https://github.com/an-tao/drogon /usr/local/src/drogon && \
+RUN git clone -b v1.8.4 https://github.com/an-tao/drogon /usr/local/src/drogon && \
     cd /usr/local/src/drogon && \
     sed -i 's/bash/sh/' ./build.sh && \
     ./build.sh

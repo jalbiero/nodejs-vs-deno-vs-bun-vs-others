@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM jarredsumner/bun:0.5.1
+FROM oven/bun:0.5.9
 
 WORKDIR /opt/test
 
