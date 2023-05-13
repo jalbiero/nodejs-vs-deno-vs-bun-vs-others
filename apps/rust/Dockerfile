@@ -3,7 +3,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 ######################################
-FROM rust:1.67.1-alpine3.17 AS builder
+FROM rust:1.69.0-alpine3.17 AS builder
 
 RUN apk --no-cache add musl-dev
 
