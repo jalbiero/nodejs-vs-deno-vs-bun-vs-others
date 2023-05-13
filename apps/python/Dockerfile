@@ -12,6 +12,6 @@ WORKDIR /opt/test
 
 COPY ./test_app .
 
-RUN poetry install
+RUN rm -f poetry.lock && poetry install
 
 CMD ["poetry", "run", "app"]

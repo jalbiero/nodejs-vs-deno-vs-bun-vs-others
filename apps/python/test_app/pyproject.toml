@@ -14,7 +14,7 @@ app = "test_app.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-flask = "^2.2.2"
+flask = "2.3.2"
 
 [build-system]
 requires = ["poetry-core"]

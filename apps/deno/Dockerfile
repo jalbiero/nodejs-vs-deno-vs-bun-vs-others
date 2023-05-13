@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM denoland/deno:1.33.1
+FROM denoland/deno:1.33.3
 
 WORKDIR /opt/test
 
