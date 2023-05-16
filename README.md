@@ -36,10 +36,10 @@ In order to make the tests more interesting I added 2 fast native environments, 
 
     Verb | Route | Result | Description
     -- | -- | -- | -- 
-    GET | `/` | Fixed little string: e.g. "Deno test" | Very simple API that return a fixed data
-    GET | `/echo/<data>` | Return the same `<data>` | Simple API that return the same received data
-    GET | `/getPrimesLessThan/<limit>` | Return a list of primes less than `<limit>` | CPU and memory are function of the specified _limit_
-    GET | `/countPrimesLessThan/<limit>` | Return the number of primes less than `<limit>` | CPU is function of the specified _limit_
+    GET | `/` | Fixed little string: e.g. "Deno test" | Very simple API that returns a fixed data
+    GET | `/echo/<data>` | Return the same `<data>` | Simple API that returns the same received data
+    GET | `/getPrimesLessThan/<limit>` | Returns a list of primes less than `<limit>` | CPU and memory usage are function of the specified _limit_
+    GET | `/countPrimesLessThan/<limit>` | Returns the number of primes less than `<limit>` | CPU usage is function of the specified _limit_
 
 2. Tests are executed using [JMeter](https://jmeter.apache.org/) from command line (see [Test Makefile](Makefile)).
    - The [JMeter Test Plan](tests/jmeter/) has the following features:
@@ -52,7 +52,7 @@ In order to make the tests more interesting I added 2 fast native environments, 
 
 ### Programming languages/Frameworks used
 
-Language/Runtime | Version (*) | REST Library/Framework used | Version 
+Language/Runtime | Version (*) | REST Library/Framework | Version 
 -- | -- | -- | -- 
 Bun  | 0.5.9 | Express | 4.18.2
 C++  | g++ 12.2.1, C++20 mode | Drogon | 1.8.4
