@@ -1,0 +1,22 @@
+# Copyright (C) 2023 Javier Albiero (jalbiero)
+# Distributed under the MIT License (see the accompanying LICENSE file
+# or go to http://opensource.org/licenses/MIT).
+
+#######################################
+FROM mcr.microsoft.com/dotnet/sdk:${CSHARP_SDK_ALPINE_DOCKER} as builder
+
+WORKDIR /opt/test
+
+COPY ./test_app .
+
+RUN dotnet build && \
+    dotnet publish -o app_release
+   
+#######################################
+FROM mcr.microsoft.com/dotnet/runtime:${CSHARP_RUN_ALPINE_DOCKER}
+
+WORKDIR /opt/test
+
+COPY --from=builder /opt/test/app_release .
+
+CMD ["dotnet", "run" ]
