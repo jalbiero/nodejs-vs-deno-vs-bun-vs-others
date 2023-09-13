@@ -22,6 +22,7 @@ Language/Runtime | Version | REST Library/Framework used | Version
 -- | -- | -- | -- 
 Bun  | 0.5.9 | Express | 4.18.2
 C++  | g++ 12.2.1, C++20 mode | Drogon | 1.8.4
+C#   | 11 | .NET | 7.0
 Deno | 1.33.3 | Express | 4.18.2
 Java (OpenJDK) | 19.0.1 | Spring boot | 3.0.6
 NodeJS | 20.1.0 | Express | 4.18.2
