@@ -5,7 +5,7 @@
 VERSION = 0.1.0
 NAME = jalbiero/test-csharp
 
-build-image: 
+build-image:
 	docker build -t $(NAME):latest .
 
 push-image:
@@ -15,8 +15,8 @@ push-image:
 	docker push $(NAME):latest
 
 run-image:
-	docker run --init -it -p 5298:8000 $(NAME):latest
+	docker run --init -it -p 8000:8000 $(NAME):latest
 
 # Only valid if you have Deno installed on your system
-run-local: 
-	cd test_app && deno task dev
+run-local:
+	cd test_app && dotnet run

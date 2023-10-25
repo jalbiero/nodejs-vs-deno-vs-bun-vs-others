@@ -10,6 +10,9 @@
 			"path": "apps/c++"
 		},
 		{
+			"path": "apps/csharp"
+		},
+		{
 			"path": "apps/deno"
 		},
 		{
