@@ -15,6 +15,12 @@ services:
     image: jalbiero/test-cpp
     ports:
       - ${CPP_PORT}:8000
+  charp:
+    build:
+      context: apps/charp
+    image: jalbiero/test-csharp
+    ports:
+      - ${CSHARP_PORT}:8000
   deno:
     build:
       context: apps/deno
@@ -35,7 +41,7 @@ services:
       - ${NODEJS_PORT}:8000
   python:
     build:
-      context: apps/python    
+      context: apps/python
     image: jalbiero/test-python
     ports:
       - ${PYTHON_PORT}:8000

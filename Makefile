@@ -51,7 +51,7 @@ ifndef DO_NOT_START_DOCKERS
 # in the docker compose file for each service, but this check will interfiere
 # with the tests
 	@echo Waiting for services
-	@sleep 5 
+	@sleep 5
 	docker-compose logs
 endif
 
@@ -62,6 +62,7 @@ clean:
 run: start_dockers clean
 	$(call FUNCTION_RUN_JMETER,bun_test,$(BUN_PORT))
 	$(call FUNCTION_RUN_JMETER,cpp_test,$(CPP_PORT))
+	$(call FUNCTION_RUN_JMETER,charp_test,$(CSHARP_PORT))
 	$(call FUNCTION_RUN_JMETER,deno_test,$(DENO_PORT))
 	$(call FUNCTION_RUN_JMETER,java_test,$(JAVA_PORT))
 	$(call FUNCTION_RUN_JMETER,nodejs_test,$(NODEJS_PORT))
