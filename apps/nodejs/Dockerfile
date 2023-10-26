@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM node:20.1.0-alpine3.17
+FROM node:20.9.0-alpine3.18
 
 WORKDIR /opt/test
 

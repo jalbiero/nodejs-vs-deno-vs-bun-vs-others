@@ -13,7 +13,7 @@ RUN dotnet build --configuration Release && \
     dotnet publish --configuration Release -o app_release
 
 #######################################
-FROM mcr.microsoft.com/dotnet/aspnet:${CSHARP_RUN_ALPINE_DOCKER}
+FROM mcr.microsoft.com/dotnet/aspnet:${CSHARP_ASPNET_ALPINE_DOCKER}
 
 WORKDIR /opt/test
 

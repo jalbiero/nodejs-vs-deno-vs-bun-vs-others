@@ -2,36 +2,50 @@
 # After any update here, run the companion script "update_versions.sh"
 
 # Note: Always edit template files (.vtmpl) if you need it, don't edit
-# associated files (e.g. template: foo.cpp.vtmpl, associated: foo.cpp) because 
+# associated files (e.g. template: foo.cpp.vtmpl, associated: foo.cpp) because
 # the file is going to be overwritten by the updater script.
 
-BUN_DOCKER=0.5.9
+# https://hub.docker.com/r/oven/bun/tags
+# https://www.npmjs.com/package/express
+BUN_DOCKER=1.0.7
 BUN_DEP_EXPRESS=4.18.2
 
 # For more information about what version of g++
-# is packed with Alpine 3.17 go to this (currently g++ 12.2.1):
-# https://pkgs.alpinelinux.org/packages?name=g%2B%2B&branch=v3.17&repo=&arch=&maintainer=
-CPP_ALPINE_DOCKER=3.17.1
-CPP_DEP_DROGON=v1.8.4
+# is packed with Alpine 3.18 go to this (currently g++ 12.2.1):
+# https://pkgs.alpinelinux.org/packages?name=g%2B%2B&branch=v3.18&repo=&arch=&maintainer=
+#
+# https://hub.docker.com/_/alpine
+# https://github.com/an-tao/drogon
+CPP_ALPINE_DOCKER=3.18.3
+CPP_DEP_DROGON=v1.8.7
 
-# .NET Code 7 SDK:
 # https://hub.docker.com/_/microsoft-dotnet-sdk/
 CSHARP_SDK_ALPINE_DOCKER=7.0-alpine3.18-amd64
-CSHARP_RUN_ALPINE_DOCKER=7.0-alpine3.18-amd64
+CSHARP_ASPNET_ALPINE_DOCKER=7.0-alpine3.18-amd64
 
-DENO_DOCKER=1.33.3
+# https://hub.docker.com/r/denoland/deno/tags
+# https://www.npmjs.com/package/express
+DENO_DOCKER=1.37.2
 DENO_DEP_EXPRESS=4.18.2
 
-JAVA_DOCKER=19-slim
-JAVA_DEP_SPRING_BOOT=3.0.6
+# https://hub.docker.com/_/openjdk/tags
+# https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+JAVA_DOCKER=21-slim
+JAVA_DEP_SPRING_BOOT=3.1.5
 
-NODE_DOCKER=20.1.0-alpine3.17
+# https://hub.docker.com/_/node/tags
+# https://www.npmjs.com/package/express
+NODE_DOCKER=20.9.0-alpine3.18
 NODE_DEP_EXPRESS=4.18.2
 
-PYTHON_DOCKER=3.11.3-alpine3.17
-PYTHON_DEP_FLASK=2.3.2
+# https://hub.docker.com/_/python/tags
+# https://pypi.org/project/Flask/#history
+PYTHON_DOCKER=3.12-alpine3.18
+PYTHON_DEP_FLASK=3.0.0
 
 # Build (RUST_DOCKER) and run (RUST_ALPINE_DOCKER)
-RUST_DOCKER=1.69.0-alpine3.17 
-RUST_ALPINE_DOCKER=3.17.1
+# https://hub.docker.com/_/rust
+# https://crates.io/crates/rocket/versions
+RUST_DOCKER=1.73.0-alpine3.18
+RUST_ALPINE_DOCKER=3.18.3
 RUST_DEP_ROCKET=0.5.0-rc.3

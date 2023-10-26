@@ -9,14 +9,14 @@ WORKDIR /opt/test
 
 COPY ./test_app .
 
-RUN dotnet build && \
-    dotnet publish -o app_release
-   
+RUN dotnet build --configuration Release && \
+    dotnet publish --configuration Release -o app_release
+
 #######################################
-FROM mcr.microsoft.com/dotnet/runtime:7.0-alpine3.18-amd64
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18-amd64
 
 WORKDIR /opt/test
 
 COPY --from=builder /opt/test/app_release .
 
-CMD ["dotnet", "run" ]
+CMD ["./test_app", "--urls=http://0.0.0.0:8000" ]

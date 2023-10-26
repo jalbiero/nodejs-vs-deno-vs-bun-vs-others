@@ -2,7 +2,7 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-FROM oven/bun:0.5.9
+FROM oven/bun:1.0.7
 
 WORKDIR /opt/test
 
