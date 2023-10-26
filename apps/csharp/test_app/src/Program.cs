@@ -22,4 +22,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Start();
+
+foreach (var url in app.Urls) {
+    Console.WriteLine("Listening on {0}", url);
+}
+
+app.WaitForShutdown();
