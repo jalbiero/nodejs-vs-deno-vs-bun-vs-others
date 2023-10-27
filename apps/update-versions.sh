@@ -5,7 +5,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 # Version updater: just edit the companion file "versions.txt", and 
-# after that run this script. 
+# after that, run this script. 
 
 # Note for macOS users: This script uses GNU sed which is the default
 # version on Linux. If you plan to use it on macOS find the "sed" command

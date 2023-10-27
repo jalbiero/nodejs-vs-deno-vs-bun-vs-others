@@ -15,9 +15,9 @@ services:
     image: jalbiero/test-cpp
     ports:
       - ${CPP_PORT}:8000
-  charp:
+  csharp:
     build:
-      context: apps/charp
+      context: apps/csharp
     image: jalbiero/test-csharp
     ports:
       - ${CSHARP_PORT}:8000
