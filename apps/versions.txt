@@ -1,12 +1,12 @@
 # Version file
 # After any update here, run the companion script "update_versions.sh"
-
+#
 # Note: Always edit template files (.vtmpl) if you need it, don't edit
 # associated files (e.g. template: foo.cpp.vtmpl, associated: foo.cpp) because
 # the file is going to be overwritten by the updater script.
 
 # https://hub.docker.com/r/oven/bun/tags
-# https://www.npmjs.com/package/express
+# https://www.npmjs.com/package/express?activeTab=versions
 BUN_DOCKER=1.0.7
 BUN_DEP_EXPRESS=4.18.2
 
@@ -14,17 +14,18 @@ BUN_DEP_EXPRESS=4.18.2
 # is packed with Alpine 3.18 go to this (currently g++ 12.2.1):
 # https://pkgs.alpinelinux.org/packages?name=g%2B%2B&branch=v3.18&repo=&arch=&maintainer=
 #
-# https://hub.docker.com/_/alpine
-# https://github.com/an-tao/drogon
+# https://hub.docker.com/_/alpine/tags
+# https://github.com/drogonframework/drogon/tags
 CPP_ALPINE_DOCKER=3.18.3
 CPP_DEP_DROGON=v1.8.7
 
 # https://hub.docker.com/_/microsoft-dotnet-sdk/
+# https://hub.docker.com/_/microsoft-dotnet-aspnet/
 CSHARP_SDK_ALPINE_DOCKER=7.0-alpine3.18-amd64
 CSHARP_ASPNET_ALPINE_DOCKER=7.0-alpine3.18-amd64
 
 # https://hub.docker.com/r/denoland/deno/tags
-# https://www.npmjs.com/package/express
+# https://www.npmjs.com/package/express?activeTab=versions
 DENO_DOCKER=1.37.2
 DENO_DEP_EXPRESS=4.18.2
 
@@ -34,7 +35,7 @@ JAVA_DOCKER=20-slim
 JAVA_DEP_SPRING_BOOT=3.1.5
 
 # https://hub.docker.com/_/node/tags
-# https://www.npmjs.com/package/express
+# https://www.npmjs.com/package/express?activeTab=versions
 NODE_DOCKER=20.9.0-alpine3.18
 NODE_DEP_EXPRESS=4.18.2
 
@@ -44,7 +45,7 @@ PYTHON_DOCKER=3.12-alpine3.18
 PYTHON_DEP_FLASK=3.0.0
 
 # Build (RUST_DOCKER) and run (RUST_ALPINE_DOCKER)
-# https://hub.docker.com/_/rust
+# https://hub.docker.com/_/rust/tags
 # https://crates.io/crates/rocket/versions
 RUST_DOCKER=1.73.0-alpine3.18
 RUST_ALPINE_DOCKER=3.18.3
