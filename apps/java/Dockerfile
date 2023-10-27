@@ -3,7 +3,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 #######################################
-FROM openjdk:21-slim AS builder
+FROM openjdk:20-slim AS builder
 
 WORKDIR /opt/test
 
@@ -12,7 +12,7 @@ COPY ./test_app .
 RUN ./gradlew task bootJar
 
 #######################################
-FROM openjdk:21-slim
+FROM openjdk:20-slim
 
 WORKDIR /opt/test
 
