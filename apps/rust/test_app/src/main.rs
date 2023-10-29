@@ -19,7 +19,7 @@ fn echo(data: &str) -> &str {
 }
 
 #[get("/getPrimesLessThan/<limit>")]
-fn get_primes_less_than(limit: i64) -> String {
+fn get_primes_less_than(limit: i32) -> String {
     let primes = primes::get_primes_less_than(limit);
 
     let response = object! {
@@ -32,7 +32,7 @@ fn get_primes_less_than(limit: i64) -> String {
 }
 
 #[get("/countPrimesLessThan/<limit>")]
-fn count_primes_less_than(limit: i64) -> String {
+fn count_primes_less_than(limit: i32) -> String {
     let response = object! {
         primes_less_than: limit,
         count: primes::count_primes_less_than(limit)

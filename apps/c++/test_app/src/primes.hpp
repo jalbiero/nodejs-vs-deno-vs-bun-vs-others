@@ -9,38 +9,38 @@
 
 #include <json/json.h>
 
-namespace primes 
+namespace primes
 {
-    inline bool is_prime(std::int64_t num) {
+    inline bool is_prime(std::int32_t num) {
         if (num <= 1) return false;
         if (num == 2) return true;
         if (num % 2 == 0) return false; // the only even prime is 2
 
         // Trial division (https://en.wikipedia.org/wiki/Prime_number#Trial_division)
-        std::int64_t limit = std::sqrt(num);
+        std::int32_t limit = std::sqrt(static_cast<float>(num)); // sqrtf is not available
 
-        for (std::int64_t i=3; i<=limit; i++) {
+        for (std::int32_t i=3; i<=limit; i++) {
             if (num % i == 0) return false;
         }
 
         return true;
     }
 
-    inline Json::Value get_primes_less_than(std::int64_t limit) {
+    inline Json::Value get_primes_less_than(std::int32_t limit) {
         Json::Value result(Json::arrayValue);
 
-        for (std::int64_t i=2; i<limit; i++) { 
+        for (std::int32_t i=2; i<limit; i++) {
             if (is_prime(i))
-                result.append(Json::Value::UInt64(i));
+                result.append(Json::Value::Int(i));
         }
 
         return result;
     }
-    
-    inline std::int64_t count_primes_less_than(std::int64_t limit) {
-        std::int64_t result = 0;
 
-        for (std::int64_t i=2; i<limit; i++) {
+    inline std::int32_t count_primes_less_than(std::int32_t limit) {
+        std::int32_t result = 0;
+
+        for (std::int32_t i=2; i<limit; i++) {
             if (is_prime(i)) result++;
         }
 

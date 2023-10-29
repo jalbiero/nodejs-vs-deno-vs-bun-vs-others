@@ -18,7 +18,7 @@ const int serverPort = 8000;
 
 int main() {
     app().registerHandler(
-        "/", 
+        "/",
         [] (const HttpRequestPtr&, RespCallbackT &&callback) {
             auto resp = HttpResponse::newHttpResponse();
             resp->setBody("C++ test");
@@ -27,7 +27,7 @@ int main() {
         {Get});
 
     app().registerHandler(
-        "/echo/{data}", 
+        "/echo/{data}",
         [] (const HttpRequestPtr&, RespCallbackT &&callback, const std::string& data) {
             auto resp = HttpResponse::newHttpResponse();
             resp->setBody(data);
@@ -36,15 +36,15 @@ int main() {
         {Get});
 
     app().registerHandler(
-        "/getPrimesLessThan/{limit}", 
+        "/getPrimesLessThan/{limit}",
         [] (const HttpRequestPtr&, RespCallbackT &&callback, const std::string& limit) {
             try {
                 auto num_limit = std::stoul(limit);
                 auto primes = primes::get_primes_less_than(num_limit);
 
                 Json::Value root;
-                root["prime_less_than"] = Json::Value::UInt64(num_limit);
-                root["count"] = Json::Value::UInt64(primes.size());
+                root["prime_less_than"] = Json::Value::Int(num_limit);
+                root["count"] = Json::Value::Int(primes.size());
                 root["primes"] = std::move(primes);
 
                 callback(HttpResponse::newHttpJsonResponse(root));
@@ -59,14 +59,14 @@ int main() {
         {Get});
 
     app().registerHandler(
-        "/countPrimesLessThan/{limit}", 
+        "/countPrimesLessThan/{limit}",
         [] (const HttpRequestPtr&, RespCallbackT &&callback, const std::string& limit) {
             try {
                 auto num_limit = std::stoul(limit);
 
                 Json::Value root;
-                root["prime_less_than"] = Json::Value::UInt64(num_limit);
-                root["count"] = Json::Value::UInt64(primes::count_primes_less_than(num_limit));
+                root["prime_less_than"] = Json::Value::Int(num_limit);
+                root["count"] = Json::Value::Int(primes::count_primes_less_than(num_limit));
 
                 callback(HttpResponse::newHttpJsonResponse(root));
             }
@@ -82,4 +82,3 @@ int main() {
     LOG_INFO << "Listening on http://" << serverHost << ':' << serverPort;
     app().addListener(serverHost, serverPort).run();
 }
-

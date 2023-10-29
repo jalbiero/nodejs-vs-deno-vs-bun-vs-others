@@ -25,7 +25,7 @@ class Controller {
     }
 
     @GetMapping("getPrimesLessThan/{limit}")
-    Map<String, Object> getPrimesLessThan(@PathVariable long limit) {
+    Map<String, Object> getPrimesLessThan(@PathVariable int limit) {
         var primes = Primes.getPrimesLessThan(limit);
 
         var result = new LinkedHashMap<String, Object>();
@@ -38,7 +38,7 @@ class Controller {
     }
 
     @GetMapping("countPrimesLessThan/{limit}")
-    Map<String, Object> countPrimesLessThan(@PathVariable long limit) {
+    Map<String, Object> countPrimesLessThan(@PathVariable int limit) {
         var result = new LinkedHashMap<String, Object>();
 
         result.put("prime_less_than", limit);
