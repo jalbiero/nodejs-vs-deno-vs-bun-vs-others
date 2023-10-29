@@ -25,12 +25,12 @@ public class Controller : ControllerBase
     }
 
     [HttpGet("getPrimesLessThan/{limit}")]
-    public IList<long> GetPrimesLessThan(long limit) {
+    public IList<int> GetPrimesLessThan(int limit) {
         return Primes.GetPrimesLessThan(limit);
     }
 
     [HttpGet("countPrimesLessThan/{limit}")]
-    public long CountPrimesLessThan(long limit) {
+    public int CountPrimesLessThan(int limit) {
         return Primes.CountPrimesLessThan(limit);
     }
 }
