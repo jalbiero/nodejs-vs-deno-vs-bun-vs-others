@@ -13,7 +13,7 @@ NUM_OF_REQS_PER_THREAD ?= 2000
 
 # Endpoint parameters
 # TODO Improve echo data
-ENDP_ECHO_DATA ?= "fooooooo-data-123-123-123-12-3-123123"
+ENDP_ECHO_DATA ?= "fooooooo-data-12938123lkj123jkljlkklkjnm123-123-123-12-3-123123lsjaslkklskl9083lk43lk5kljlk5405405095klkklhj54jh56hj65h45"
 ENDP_GET_PRIMES_LIMIT ?= 2000
 ENDP_COUNT_PRIMES_LIMIT ?= 2000
 
