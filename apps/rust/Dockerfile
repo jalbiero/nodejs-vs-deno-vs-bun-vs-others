@@ -3,7 +3,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 ######################################
-FROM rust:1.73.0-alpine3.18 AS builder
+FROM rust:1.78.0-alpine3.20 AS builder
 
 RUN apk --no-cache add musl-dev
 
@@ -14,7 +14,7 @@ COPY ./test_app .
 RUN cargo install --path .
 
 #######################################
-FROM alpine:3.18.3
+FROM alpine:3.20
 
 WORKDIR /opt/test
 

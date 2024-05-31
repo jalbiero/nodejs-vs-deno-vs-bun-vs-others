@@ -3,6 +3,6 @@
 // or go to http://opensource.org/licenses/MIT).
 
 // @deno-types="npm:@types/express@^4.17.15"
-import express, { Application, Request, Response } from "npm:express@4.18.2";
+import express, { Application, Request, Response } from "npm:express@4.19.2";
 export { express };
 export type { Application, Request, Response };

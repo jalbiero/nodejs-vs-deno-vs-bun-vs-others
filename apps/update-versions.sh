@@ -4,8 +4,8 @@
 # Distributed under the MIT License (see the accompanying LICENSE file
 # or go to http://opensource.org/licenses/MIT).
 
-# Version updater: just edit the companion file "versions.txt", and 
-# after that, run this script. 
+# Version updater: just edit the companion file "versions.txt", and
+# after that, run this script.
 
 # Note for macOS users: This script uses GNU sed which is the default
 # version on Linux. If you plan to use it on macOS find the "sed" command
@@ -13,6 +13,7 @@
 
 scriptDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 templateFileExt="vtmpl"
+readmeTemplate="template.md"
 versionFile=$scriptDir/versions.txt
 
 # Load variables to substitute
@@ -26,7 +27,7 @@ while read line; do
 done < $versionFile
 
 # Find template files
-find . -iname "*.$templateFileExt" | while read templateFile
+find . -iname "*.$templateFileExt" -o -iname "*$readmeTemplate" | while read templateFile
 do
   echo Processing $templateFile...
 
@@ -39,8 +40,8 @@ do
   fi
 
   # Prepare file to be "edited"
-  cp -f $templateFile $destinationFile 
-  
+  cp -f $templateFile $destinationFile
+
   for key in "${!substVars[@]}"; do
     value=${substVars[$key]}
     echo "--> Processing variable $key = $value"
