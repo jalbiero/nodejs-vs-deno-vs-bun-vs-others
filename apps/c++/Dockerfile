@@ -3,7 +3,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 #######################################
-FROM alpine:3.18.3 AS builder
+FROM alpine:3.20 AS builder
 
 RUN apk --no-cache add \
     cmake \
@@ -16,7 +16,7 @@ RUN apk --no-cache add \
     util-linux-dev \
     zlib-dev 
     
-RUN git clone -b v1.8.7 https://github.com/an-tao/drogon /usr/local/src/drogon && \
+RUN git clone -b v1.9.4 https://github.com/an-tao/drogon /usr/local/src/drogon && \
     cd /usr/local/src/drogon && \
     sed -i 's/bash/sh/' ./build.sh && \
     ./build.sh
@@ -31,7 +31,7 @@ RUN mkdir -p build && \
     make
 
 #######################################
-FROM alpine:3.18.3
+FROM alpine:3.20
 
 RUN apk --no-cache add libgcc libstdc++ jsoncpp libuuid
 

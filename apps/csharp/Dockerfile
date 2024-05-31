@@ -3,7 +3,7 @@
 # or go to http://opensource.org/licenses/MIT).
 
 #######################################
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine3.18-amd64 as builder
+FROM mcr.microsoft.com/dotnet/sdk:8.0.203-alpine3.19-amd64 as builder
 
 WORKDIR /opt/test
 
@@ -13,7 +13,7 @@ RUN dotnet build --configuration Release && \
     dotnet publish --configuration Release -o app_release
 
 #######################################
-FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18-amd64
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.3-alpine3.19-amd64
 
 WORKDIR /opt/test
 
